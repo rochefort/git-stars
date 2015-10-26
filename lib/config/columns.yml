@@ -1,0 +1,11 @@
+columns:
+  name: yellow
+  stars: blue
+  author: red
+  language:
+    ruby: red
+    javascript: light_blue
+    coffeescript: light_blue
+    php: magenta
+    go: green
+  last_updated: white
