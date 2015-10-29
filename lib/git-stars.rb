@@ -11,10 +11,16 @@ class GitStars
     end
 
     def list(args)
-      # TODO: formatterをparameterで指定
-      formatter = TerminalTableFormatter.new(args)
+      formatter = generate_formatter(args)
       client = Client.new(args, formatter)
       client.list
+    end
+
+    private
+
+    def generate_formatter(args)
+      # return SomeFormatter.new() if args[:format] == 'some-format'
+      TerminalTableFormatter.new(args)
     end
   end
 end
