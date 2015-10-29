@@ -10,14 +10,14 @@ class GitStars
         handle_no_command_error(meth) unless command
 
         unless command.name == @default_command
-          shell.say "Usage:"
+          shell.say 'Usage:'
           shell.say "  #{banner(command)}"
           shell.say
         end
         class_options_help(shell, nil => command.options.map { |_, o| o })
         if command.long_description
-          shell.say "Description:"
-          shell.print_wrapped(command.long_description, :indent => 2)
+          shell.say 'Description:'
+          shell.print_wrapped(command.long_description, indent: 2)
         else
           shell.say command.description
         end
