@@ -56,7 +56,7 @@ class GitStars
     option :user,        aliases: '-u', required: false, desc: 'User to use when connecting to the Github'
     option :password,    aliases: '-p', required: false, desc: 'Password to use when connecting to the Github'
     option :all,         aliases: '-a', required: false, desc: 'Get all gems (default: 30 gems)'
-    option :filter,      aliases: '-f', required: false, desc: 'Filter result by the keyword'
+    option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :columns_yml, aliases: '-c', required: false, desc: 'Specific columns.yml'
     option :sort,        aliases: '-s', required: false, desc: 'Sort by columns. [s]tarred_at(default), [n]ame, [l]anuguage, [a]uthor, [p]opular(stars), [u]pdated'
     def list
