@@ -5,6 +5,8 @@ require 'octokit'
 
 class GitStars
   class Client
+    REQUEST_TIMEOUT = 20
+    CACHE_TTL = 3600
     def initialize(args, formatter)
       @client = setup_client(args)
       @client.auto_paginate = !!args[:all]
@@ -15,7 +17,6 @@ class GitStars
     end
 
     def list
-      options = { fail: [], timeout: 20, cache: 360000 }
       result = APICache.get("git-stars1_#{@client.auto_paginate}", options) { @client.starred }.map { |gem| Gem.new(gem) }
       result = result.find_all { |gem| gem.include?(@keyword) } if @keyword
       @formatter.output(result)
