@@ -16,6 +16,20 @@ class GitStars
     def output(_result)
       fail 'Called abstract method!!'
     end
+
+    private
+
+    def column_color(val, column)
+      return nil if val.empty?
+
+      color = nil
+      if column == 'language'
+        color = @columns[column][val.downcase] if @columns[column]
+      else
+        color = @columns[column]
+      end
+      color
+    end
   end
 end
 

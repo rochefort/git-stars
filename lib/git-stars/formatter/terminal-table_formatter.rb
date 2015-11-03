@@ -29,13 +29,7 @@ class GitStars
     def generate_row(gem)
       HEADER_COLUMNS.inject([]) do |row, column|
         val = gem.send(column)
-        return val unless val
-
-        if column == 'language'
-          color = @columns[column][val.downcase] if @columns[column]
-        else
-          color = @columns[column]
-        end
+        color = column_color(val, column) unless val.empty?
         row << (color ? val.send(color) : val)
       end
     end
