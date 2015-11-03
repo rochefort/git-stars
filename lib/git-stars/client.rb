@@ -7,6 +7,7 @@ class GitStars
   class Client
     REQUEST_TIMEOUT = 20
     CACHE_TTL = 3600
+
     def initialize(args, formatter)
       @client = setup_client(args)
       @client.auto_paginate = !!args[:all]
@@ -17,9 +18,12 @@ class GitStars
     end
 
     def list
-      result = APICache.get("git-stars1_#{@client.auto_paginate}", options) { @client.starred }.map { |gem| Gem.new(gem) }
+      options = { fail: [], timeout: REQUEST_TIMEOUT, cache: CACHE_TTL }
+      result = APICache.get("git-stars_#{@client.auto_paginate}", options) { @client.starred }.map { |gem| Gem.new(gem) }
       result = result.find_all { |gem| gem.include?(@keyword) } if @keyword
       @formatter.output(result)
+    rescue Octokit::Unauthorized => e
+      raise(AuthenticationError, e)
     end
 
     private
@@ -27,13 +31,10 @@ class GitStars
     def setup_client(args)
       return Octokit::Client.new(access_token: args[:token]) if args[:token]
 
-      if args[:user] || args[:password]
-        # TODO: exception
-        fail ArgumentError unless args[:user] && args[:password]
+      if args[:user] && args[:password]
         return Octokit::Client.new(login: args[:user], password: args[:password])
       end
 
-      # TODO: netrc error
       Octokit::Client.new(netrc: true)
     end
   end

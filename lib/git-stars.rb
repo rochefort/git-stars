@@ -5,6 +5,7 @@ require 'git-stars/gem'
 require 'git-stars/version'
 
 class GitStars
+  class AuthenticationError < StandardError; end
   class << self
     def run
       CLI.start
@@ -14,6 +15,12 @@ class GitStars
       formatter = generate_formatter(args)
       client = Client.new(args, formatter)
       client.list
+    rescue AuthenticationError => e
+      puts "#{e.class} error occured."
+      if ENV['DEBUG']
+        puts e.message
+        puts e.backtrace
+      end
     end
 
     private
