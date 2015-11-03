@@ -48,6 +48,7 @@ class GitStars
       end
     end
 
+    # TODO: verbose option
     # desc :list, "\033[32m(DEFAULT COMMAND)\e[0m Listing github stars", hide: true
     desc :list, '', hide: true
     option :token,       aliases: '-t', required: false, desc: 'Access token to use when connecting to the Github'
