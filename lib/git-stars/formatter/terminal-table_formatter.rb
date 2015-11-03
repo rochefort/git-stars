@@ -1,4 +1,3 @@
-require 'colorize'
 require 'terminal-table-unicode'
 require 'terminal/table'
 require 'terminal/cell'

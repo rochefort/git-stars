@@ -1,3 +1,4 @@
+require 'colorize'
 require 'yaml'
 
 class GitStars
@@ -34,3 +35,4 @@ class GitStars
 end
 
 require 'git-stars/formatter/terminal-table_formatter'
+require 'git-stars/formatter/list_formatter'

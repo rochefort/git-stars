@@ -3,6 +3,7 @@ require 'git-stars/client'
 require 'git-stars/formatter'
 require 'git-stars/gem'
 require 'git-stars/version'
+require 'git-stars/ext/string'
 
 class GitStars
   class AuthenticationError < StandardError; end
@@ -26,7 +27,7 @@ class GitStars
     private
 
     def generate_formatter(args)
-      # return SomeFormatter.new() if args[:format] == 'some-format'
+      return ListFormatter.new(args) if args[:format] == 'list'
       TerminalTableFormatter.new(args)
     end
   end
