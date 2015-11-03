@@ -8,7 +8,7 @@ class GitStars
     def initialize(args, formatter)
       @client = setup_client(args)
       @client.auto_paginate = true if args[:all]
-      @keyword ||= args[:filter]
+      @keyword ||= args[:keyword]
       @sort ||= args[:sort]
       @formatter = formatter
       APICache.store = Moneta.new(:File, dir: Dir.tmpdir)
