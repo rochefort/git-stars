@@ -7,7 +7,7 @@ class GitStars
   class Client
     def initialize(args, formatter)
       @client = setup_client(args)
-      @client.auto_paginate = true if args[:all]
+      @client.auto_paginate = !!args[:all]
       @keyword ||= args[:keyword]
       @sort ||= args[:sort]
       @formatter = formatter
