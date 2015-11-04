@@ -53,12 +53,13 @@ class GitStars
     desc :list, '', hide: true
     option :token,       aliases: '-t', required: false, desc: 'Access token to use when connecting to the Github'
     option :user,        aliases: '-u', required: false, desc: 'User to use when connecting to the Github'
-    option :password,    aliases: '-p', required: false, desc: 'Password to use when connecting to the Github'
+    option :password,    aliases: '-p', required: false, desc: "Password to use when connecting to the Github\n\n"
+
     option :all,         aliases: '-a', required: false, desc: 'Get all gems (default: 30 gems)'
-    option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default), list'
-    option :columns_yml, aliases: '-c', required: false, desc: 'Specific columns.yml'
+    option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :sort,        aliases: '-s', required: false, desc: 'Sort by columns. [s]tarred_at(default), [n]ame, [l]anuguage, [a]uthor, [p]opular(stars), [u]pdated'
+    option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
     def list
       GitStars.list(options)
     end
