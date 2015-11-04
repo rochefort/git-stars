@@ -4,8 +4,9 @@ columns:
   author: red
   language:
     ruby: red
-    javascript: light_blue
-    coffeescript: light_blue
+    javascript: light_white
     php: magenta
     go: green
+    swift: light_blue
+    objective-c: light_blue
   last_updated: white
