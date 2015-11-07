@@ -1,7 +1,6 @@
 columns:
   name: yellow
   stars: blue
-  author: red
   language:
     ruby: red
     javascript: light_white

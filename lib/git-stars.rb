@@ -1,7 +1,7 @@
 require 'git-stars/cli'
 require 'git-stars/client'
 require 'git-stars/formatter'
-require 'git-stars/gem'
+require 'git-stars/project'
 require 'git-stars/version'
 require 'git-stars/ext/string'
 

@@ -19,8 +19,8 @@ class GitStars
 
     def list
       options = { fail: [], timeout: REQUEST_TIMEOUT, cache: CACHE_TTL }
-      result = APICache.get("git-stars_#{@client.auto_paginate}", options) { @client.starred }.map { |gem| Gem.new(gem) }
-      result = result.find_all { |gem| gem.include?(@keyword) } if @keyword
+      result = APICache.get("git-stars_#{@client.auto_paginate}", options) { @client.starred }.map { |prj| Project.new(prj) }
+      result = result.find_all { |prj| prj.include?(@keyword) } if @keyword
       @formatter.output(result)
     rescue Octokit::Unauthorized => e
       raise(AuthenticationError, e)

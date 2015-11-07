@@ -6,7 +6,7 @@ require 'terminal/style'
 
 class GitStars
   class TerminalTableFormatter < GitStars::Formatter
-    HEADER_COLUMNS = %w(name description language author stars last_updated)
+    HEADER_COLUMNS = %w(name description language stars last_updated)
     def output(result)
       puts generate_table(result)
       puts "Result count: #{result.count}"

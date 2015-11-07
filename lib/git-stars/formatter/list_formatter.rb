@@ -2,8 +2,8 @@ require 'unicode/display_width'
 
 class GitStars
   class ListFormatter < GitStars::Formatter
-    HEADER_COLUMNS = %w(name language author stars description)
-    DEFAULT_COLUMNS_SIZES = [40, 10, 10, 6, 20]
+    HEADER_COLUMNS = %w(name language stars description)
+    DEFAULT_COLUMNS_SIZES = [40, 10, 6, 20]
 
     def output(result)
       rule_columns_sizes(result)
@@ -17,13 +17,12 @@ class GitStars
       @columns_sizes = DEFAULT_COLUMNS_SIZES.dup
       rule_max_column_size(projects, :name)
       rule_max_column_size(projects, :language)
-      rule_max_column_size(projects, :author)
       rule_max_description_size
     end
 
     def render_header
       f = @columns_sizes
-      fmt = "%-#{f[0]}s %-#{f[1]}s %-#{f[2]}s %#{f[3]}s %-#{f[4]}s"
+      fmt = "%-#{f[0]}s %-#{f[1]}s %#{f[2]}s %-#{f[3]}s"
       puts fmt % HEADER_COLUMNS.map(&:capitalize)
       puts fmt % @columns_sizes.map { |col| '-' * col }
     end

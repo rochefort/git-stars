@@ -61,6 +61,7 @@ class GitStars
     option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :sort,        aliases: '-s', required: false, desc: 'Sort by columns. [s]tarred_at(default), [n]ame, [l]anuguage, [a]uthor, [p]opular(stars), [u]pdated'
     option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
+
     def list
       GitStars.list(options)
     end
