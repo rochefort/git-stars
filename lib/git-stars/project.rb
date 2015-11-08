@@ -12,7 +12,7 @@ class GitStars
       @name = gem.full_name || ''
       @description = gem.description || ''
       @language = gem.language || ''
-      @stars = gem.stargazers_count.to_s || ''
+      @stars = gem.stargazers_count || nil
       @last_updated = actionview_time_ago_inwords(gem.updated_at) || ''
     end
 

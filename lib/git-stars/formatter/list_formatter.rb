@@ -34,7 +34,7 @@ class GitStars
         HEADER_COLUMNS[0..-2].each_with_index do |column, i|
           val = project.send(column)
           color = column_color(val, column)
-          fmt = (val == val.to_i.to_s) ? "%#{f[i]}s " : "%-#{f[i]}s "
+          fmt = (val == val.to_s.to_i) ? "%#{f[i]}s " : "%-#{f[i]}s "
           formatted_val = fmt % val
           formatted_val = formatted_val.send(color) if color
           result << formatted_val

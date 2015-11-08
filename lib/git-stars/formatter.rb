@@ -23,7 +23,7 @@ class GitStars
 
     def column_color(val, column)
       return nil unless @enable_color
-      return nil if val.empty?
+      return nil unless val || !val.empty?
 
       color = nil
       if column == 'language'

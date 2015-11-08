@@ -31,7 +31,7 @@ class GitStars
 
     def generate_row(gem)
       HEADER_COLUMNS.inject([]) do |row, column|
-        val = gem.send(column)
+        val = gem.send(column).to_s
         color = column_color(val, column) unless val.empty?
         row << (color ? val.send(color) : val)
       end
