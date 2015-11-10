@@ -7,7 +7,7 @@ class Util
       elsif (RUBY_PLATFORM =~ /java/ || (!STDIN.tty? && ENV['TERM'])) && command_exists?('tput')
         [`tput cols`.to_i, `tput lines`.to_i]
       elsif STDIN.tty? && command_exists?('stty')
-        `stty size`.scan(/\d+/).map {  |s| s.to_i }.reverse
+        `stty size`.scan(/\d+/).map(&:to_i).reverse
       else
         nil
       end
