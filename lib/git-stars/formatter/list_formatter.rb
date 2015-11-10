@@ -55,30 +55,11 @@ class GitStars
     end
 
     def rule_max_description_size
-      terminal_width, _terminal_height = detect_terminal_size
+      terminal_width, _terminal_height = Util.detect_terminal_size
       if terminal_width
         description_width = terminal_width - @columns_sizes[0..-2].inject(&:+) - (@columns_sizes.size - 1)
         @columns_sizes[-1] = description_width if description_width >= DEFAULT_COLUMNS_SIZES.last
       end
-    end
-
-    # https://github.com/cldwalker/hirb/blob/master/lib/hirb/util.rb#L61-71
-    def detect_terminal_size
-      if (ENV['COLUMNS'] =~ /^\d+$/) && (ENV['LINES'] =~ /^\d+$/)
-        [ENV['COLUMNS'].to_i, ENV['LINES'].to_i]
-      elsif (RUBY_PLATFORM =~ /java/ || (!STDIN.tty? && ENV['TERM'])) && command_exists?('tput')
-        [`tput cols`.to_i, `tput lines`.to_i]
-      elsif STDIN.tty? && command_exists?('stty')
-        `stty size`.scan(/\d+/).map {  |s| s.to_i }.reverse
-      else
-        nil
-      end
-    rescue
-      nil
-    end
-
-    def command_exists?(command)
-      ENV['PATH'].split(File::PATH_SEPARATOR).any? { |d| File.exist? File.join(d, command) }
     end
   end
 end
