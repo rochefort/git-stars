@@ -1,5 +1,3 @@
-require 'unicode/display_width'
-
 class GitStars
   class ListFormatter < GitStars::Formatter
     HEADER_COLUMNS = %w(name language stars description)

@@ -1,3 +1,4 @@
+require 'unicode/display_width'
 class String
   def mb_slice(width)
     return '' if empty?
