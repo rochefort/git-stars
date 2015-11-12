@@ -8,12 +8,14 @@ class GitStars
     include ActionView::Helpers::DateHelper
 
     attr_accessor :name, :description, :language, :stars, :last_updated
+    attr_accessor :raw_last_updated
     def initialize(gem)
       @name = gem.full_name || ''
       @description = gem.description || ''
       @language = gem.language || ''
       @stars = gem.stargazers_count || nil
       @last_updated = actionview_time_ago_inwords(gem.updated_at) || ''
+      @raw_last_updated = gem.updated_at
     end
 
     def include?(keyword)
