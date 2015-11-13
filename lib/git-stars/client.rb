@@ -12,7 +12,7 @@ class GitStars
       @client = setup_client(args)
       @client.auto_paginate = !!args[:all]
       @keyword ||= args[:keyword]
-      @sort ||= case args[:sort].downcase
+      @sort ||= case args[:sort]
         when 'n', 'name'         then 'name'
         when 'l', 'language'     then 'language'
         when 's', 'stars'        then 'stars'
