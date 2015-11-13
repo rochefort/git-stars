@@ -19,12 +19,15 @@ class GitStars
         when 'u', 'last_updated' then 'raw_last_updated'
       end
       @formatter = formatter
+      @refresh = !!args[:refresh]
       APICache.store = Moneta.new(:File, dir: Dir.tmpdir)
     end
 
     def list
-      options = { fail: [], timeout: REQUEST_TIMEOUT, cache: CACHE_TTL }
-      result = APICache.get("git-stars_#{@client.auto_paginate}", options) { @client.starred }.map { |prj| Project.new(prj) }
+      options = { fail: [], timeout: REQUEST_TIMEOUT, cache: CACHE_TTL, period: 0 }
+      cache_key = "git-stars_#{@client.auto_paginate}"
+      APICache.delete(cache_key) if @refresh
+      result = APICache.get(cache_key, options) { @client.starred }.map { |prj| Project.new(prj) }
       result = result.find_all { |prj| prj.include?(@keyword) } if @keyword
       sort_by_val(result) if @sort
       @formatter.output(result)

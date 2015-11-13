@@ -61,6 +61,7 @@ class GitStars
     option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :sort,        aliases: '-s', required: false, desc: 'Sort by columns, default column is starred_at. [n]ame, [l]anuguage, [s]tars, [l]ast updated'
     option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
+    option :refresh,     aliases: '-r', required: false, desc: 'Call API after removing cache'
 
     def list
       GitStars.list(options)
