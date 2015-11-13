@@ -8,6 +8,7 @@ class GitStars
   class TerminalTableFormatter < GitStars::Formatter
     HEADER_COLUMNS = %w(name description language stars last_updated)
     def output(result)
+      fail NoResultError if result.empty?
       puts generate_table(result)
       puts "Result count: #{result.count}"
     end

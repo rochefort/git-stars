@@ -8,6 +8,7 @@ require 'git-stars/ext/string'
 
 class GitStars
   class AuthenticationError < StandardError; end
+  class NoResultError < StandardError; end
   class << self
     def run
       CLI.start
@@ -23,6 +24,8 @@ class GitStars
         puts e.message
         puts e.backtrace
       end
+    rescue NoResultError => _e
+      puts 'No results.'
     end
 
     private

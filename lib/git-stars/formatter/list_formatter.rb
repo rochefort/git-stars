@@ -4,6 +4,7 @@ class GitStars
     DEFAULT_COLUMNS_SIZES = [40, 10, 6, 20]
 
     def output(result)
+      fail NoResultError if result.empty?
       rule_columns_sizes(result)
       render_header
       render_body(result)
