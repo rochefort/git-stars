@@ -36,5 +36,5 @@ class GitStars
   end
 end
 
+require 'git-stars/formatter/simple_formatter'
 require 'git-stars/formatter/terminal_table_formatter'
-require 'git-stars/formatter/list_formatter'

@@ -1,5 +1,5 @@
 class GitStars
-  class ListFormatter < GitStars::Formatter
+  class SimpleFormatter < GitStars::Formatter
     HEADER_COLUMNS = %w(name language stars description)
     DEFAULT_COLUMNS_SIZES = [40, 10, 6, 20]
 

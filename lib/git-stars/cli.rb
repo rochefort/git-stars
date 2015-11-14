@@ -57,7 +57,7 @@ class GitStars
 
     option :all,         aliases: '-a', required: false, desc: 'Get all gems (default: 30 gems)'
     option :color,       aliases: '-c', required: false, default: true, type: :boolean, desc: 'Enable color in the output.'
-    option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default), list'
+    option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default) or simple'
     option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
     option :sort,        aliases: '-s', required: false, desc: 'Sort by columns, default column is starred_at. [n]ame, [l]anuguage, [s]tars, [l]ast updated'
     option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'

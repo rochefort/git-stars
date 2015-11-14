@@ -31,7 +31,7 @@ class GitStars
     private
 
     def generate_formatter(args)
-      return ListFormatter.new(args) if args[:format] == 'list'
+      return SimpleFormatter.new(args) if args[:format] == 'simple'
       TerminalTableFormatter.new(args)
     end
   end
