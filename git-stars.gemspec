@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['rochefort']
   spec.email         = ['terasawan@gmail.com']
 
-  spec.summary       = 'CLI-Based tool that show starred projects'
+  spec.summary       = 'CLI-Based tool that show your starred projects'
   spec.description   = spec.summary
   spec.homepage      = 'https://github.com/rochefort/git-stars'
 
