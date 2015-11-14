@@ -55,13 +55,13 @@ class GitStars
     option :user,        aliases: '-u', required: false, desc: 'User to use when connecting to the Github'
     option :password,    aliases: '-p', required: false, desc: "Password to use when connecting to the Github\n\n"
 
-    option :all,         aliases: '-a', required: false, desc: 'Get all gems (default: 30 gems)'
+    option :all,         aliases: '-a', required: false, banner: '', desc: 'Get all projects (default: 30 projects)'
     option :color,       aliases: '-c', required: false, default: true, type: :boolean, desc: 'Enable color in the output.'
     option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default) or simple'
     option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
-    option :sort,        aliases: '-s', required: false, desc: 'Sort by columns, default column is starred_at. [n]ame, [l]anuguage, [s]tars, [l]ast updated'
+    option :sort,        aliases: '-s', required: false, enum: ['[n]ame', '[l]anuguage', '[s]tars', '[u] or last updated'], desc: 'Sort by columns, default column is starred_at.'
     option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
-    option :refresh,     aliases: '-r', required: false, desc: 'Call API after removing cache'
+    option :refresh,     aliases: '-r', required: false, banner: '', desc: 'Call API after removing cache'
 
     def list
       GitStars.list(options)
