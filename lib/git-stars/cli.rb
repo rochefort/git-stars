@@ -59,7 +59,7 @@ class GitStars
     option :color,       aliases: '-c', required: false, default: true, type: :boolean, desc: 'Enable color in the output.'
     option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default) or simple'
     option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
-    option :sort,        aliases: '-s', required: false, enum: ['[n]ame', '[l]anuguage', '[s]tars', '[u] or last updated'], desc: 'Sort by columns, default column is starred_at.'
+    option :sort,        aliases: '-s', required: false, desc: 'Sort by columns, default column is starred_at. ([n]ame, [l]anuguage, [s]tars, [u] or last updated)'
     option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
     option :refresh,     aliases: '-r', required: false, banner: '', desc: 'Call API after removing cache'
 
