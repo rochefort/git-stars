@@ -59,7 +59,7 @@ class GitStars
         y_val = y.send(@sort)
         case x_val
         when Fixnum, Time then y_val <=> x_val
-        when String then _val.downcase <=> y_val.downcase
+        when String then x_val.downcase <=> y_val.downcase
         else x_val <=> y_val
         end
       end
