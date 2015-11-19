@@ -12,12 +12,7 @@ class GitStars
       @client = setup_client(args)
       @client.auto_paginate = !!args[:all]
       @keyword ||= args[:keyword]
-      @sort ||= case args[:sort]
-        when 'n', 'name'         then 'name'
-        when 'l', 'language'     then 'language'
-        when 's', 'stars'        then 'stars'
-        when 'u', 'last_updated' then 'raw_last_updated'
-      end
+      @sort ||= setup_sort(args[:sort])
       @formatter = formatter
       @refresh = !!args[:refresh]
       APICache.store = Moneta.new(:File, dir: Dir.tmpdir)
@@ -46,6 +41,15 @@ class GitStars
       client = Octokit::Client.new(netrc: true)
       fail AuthenticationError unless correct_netrc?
       client
+    end
+
+    def setup_sort(sort)
+      case sort
+      when 'n', 'name'         then 'name'
+      when 'l', 'language'     then 'language'
+      when 's', 'stars'        then 'stars'
+      when 'u', 'last_updated' then 'raw_last_updated'
+      end
     end
 
     def correct_netrc?
