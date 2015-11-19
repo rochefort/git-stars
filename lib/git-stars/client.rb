@@ -42,7 +42,15 @@ class GitStars
       if args[:user] && args[:password]
         return Octokit::Client.new(login: args[:user], password: args[:password])
       end
-      Octokit::Client.new(netrc: true)
+
+      client = Octokit::Client.new(netrc: true)
+      fail AuthenticationError unless correct_netrc?
+      client
+    end
+
+    def correct_netrc?
+      n = Netrc.read
+      !!n['api.github.com']
     end
 
     def sort_by_val(result)
