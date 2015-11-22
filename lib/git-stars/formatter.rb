@@ -9,7 +9,6 @@ class GitStars
       else
         columns_yml = File.expand_path(File.dirname(__FILE__) + '/../config/columns.yml')
       end
-      fail "Specified yml is not existed #{columns_yml}" unless File.exist?(columns_yml)
       @columns = setup_colors(columns_yml) || {}
       @enable_color = options[:color]
     end
@@ -34,6 +33,7 @@ class GitStars
     end
 
     def setup_colors(yml_file)
+      fail YmlLoadError, yml_file unless File.exist?(yml_file)
       columns = YAML.load_file(yml_file)['columns']
       fail YmlColorError unless allowed_colors?(columns)
       columns

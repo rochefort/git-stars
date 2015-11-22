@@ -9,6 +9,7 @@ require 'git-stars/ext/string'
 class GitStars
   class AuthenticationError < StandardError; end
   class NoResultError < StandardError; end
+  class YmlLoadError < StandardError; end
   class YmlParseError < StandardError; end
   class YmlColorError < StandardError; end
   class << self
@@ -28,6 +29,8 @@ class GitStars
       end
     rescue NoResultError => _e
       puts 'No results.'
+    rescue YmlLoadError => e
+      puts "Specified yml is not existed: #{e.message}"
     rescue YmlParseError => e
       puts 'can not parse yml'
       puts e.message
