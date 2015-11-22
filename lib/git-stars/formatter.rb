@@ -32,10 +32,31 @@ class GitStars
       end
       color
     end
+
     def setup_colors(yml_file)
       columns = YAML.load_file(yml_file)['columns']
+      fail YmlColorError unless allowed_colors?(columns)
+      columns
     rescue Psych::SyntaxError => e
       raise YmlParseError, e
+    end
+
+    def allowed_colors?(columns)
+      allowed_colors = String.colors.map(&:to_s)
+      columns_values = extract_values(columns)
+      columns_values.all? { |color| allowed_colors.include?(color) }
+    end
+
+    def extract_values(columns)
+      ret = []
+      columns.each do |_k, col|
+        if col.class == Hash
+          ret += extract_values(col)
+        else
+          ret << col
+        end
+      end
+      ret
     end
   end
 end
