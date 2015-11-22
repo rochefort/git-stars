@@ -10,8 +10,7 @@ class GitStars
         columns_yml = File.expand_path(File.dirname(__FILE__) + '/../config/columns.yml')
       end
       fail "Specified yml is not existed #{columns_yml}" unless File.exist?(columns_yml)
-      # TODO: yml parse error
-      @columns = YAML.load_file(columns_yml)['columns'] || {}
+      @columns = setup_colors(columns_yml) || {}
       @enable_color = options[:color]
     end
 
@@ -32,6 +31,11 @@ class GitStars
         color = @columns[column]
       end
       color
+    end
+    def setup_colors(yml_file)
+      columns = YAML.load_file(yml_file)['columns']
+    rescue Psych::SyntaxError => e
+      raise YmlParseError, e
     end
   end
 end

@@ -9,6 +9,7 @@ require 'git-stars/ext/string'
 class GitStars
   class AuthenticationError < StandardError; end
   class NoResultError < StandardError; end
+  class YmlParseError < StandardError; end
   class << self
     def run
       CLI.start
@@ -26,6 +27,11 @@ class GitStars
       end
     rescue NoResultError => _e
       puts 'No results.'
+    rescue YmlParseError => e
+      puts 'can not parse yml'
+      puts e.message
+    rescue YmlColorError => _e
+      puts 'specified a disallowed color in yml'
     end
 
     private
