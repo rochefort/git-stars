@@ -5,7 +5,6 @@ require 'git-stars/util'
 require 'git-stars/formatter'
 require 'git-stars/project'
 require 'git-stars/version'
-require 'git-stars/ext/string'
 
 class GitStars
   class AuthenticationError < StandardError; end

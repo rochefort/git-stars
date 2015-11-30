@@ -38,7 +38,7 @@ class GitStars
           formatted_val = formatted_val.send(color) if color
           result << formatted_val
         end
-        result << project.description.mb_slice(f.last)
+        result << project.description.mb_truncate(f.last)
         puts result
       end
     end
