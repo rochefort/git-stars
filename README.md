@@ -17,13 +17,11 @@ And then you can use this with `-t(--token)` option.
 ```
 git stars -t your_access_token
 ```
-
 2. basic authentication  
 The second is using `-u(--user)` and `-p(--password)`.
 ```
 git stars -u user -p password
 ```
-
 3. .netrc  
 The third is using .netrc.
 You can create ~/.netrc like below:
