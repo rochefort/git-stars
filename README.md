@@ -10,19 +10,19 @@ git-stars is a command line utility to show [Your stars](https://github.com/star
 
 git-stars use [octokit/octokit.rb](https://github.com/octokit/octokit.rb). So you can choose 3 ways to authenticate Github API.  
 
-1. OAuth access token  
+1.OAuth access token  
 You can create access tokens through your GitHub Account Settings.  
 [Creating an access token for command-line use - User Documentation](https://help.github.com/articles/creating-an-access-token-for-command-line-use/)
 And then you can use this with `-t(--token)` option.
 ```
 git stars -t your_access_token
 ```
-2. basic authentication  
+2.basic authentication  
 The second is using `-u(--user)` and `-p(--password)`.
 ```
 git stars -u user -p password
 ```
-3. .netrc  
+3.`.netrc`  
 The third is using .netrc.
 You can create ~/.netrc like below:
 ```
