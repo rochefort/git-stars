@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'actionview', '~> 4.2.5'
   spec.add_dependency 'api_cache',  '~> 0.3.0'
   spec.add_dependency 'colorize',   '~> 0.7.7'
-  spec.add_dependency 'mb_string',  '~> 0.1.2'
+  spec.add_dependency 'mb_string',  '~> 0.1.3'
   spec.add_dependency 'moneta',     '~> 0.8.0'
   spec.add_dependency 'netrc',      '~> 0.11.0'
   spec.add_dependency 'octokit',    '~> 4.2.0'
