@@ -24,6 +24,7 @@ class GitStars
       client.list
     rescue AuthenticationError => e
       puts "#{e.class} error occured."
+      puts 'See https://github.com/rochefort/git-stars#usage'
       if ENV['DEBUG']
         puts e.message
         puts e.backtrace
