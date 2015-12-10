@@ -1,4 +1,5 @@
 require 'mb_string'
+require 'unicode/display_width'
 require 'git-stars/cli'
 require 'git-stars/client'
 require 'git-stars/util'
