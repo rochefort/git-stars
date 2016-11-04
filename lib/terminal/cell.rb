@@ -5,7 +5,7 @@ module Terminal
         # @value.gsub!(/(.{1,#{width}})( +|$\n?)|(.{1,#{width}})/, "\\1\\3\n") if @value
 
         return unless @value
-        str = ''
+        str = ""
         line_size = 0
         @value.each_char do |c|
           char_size = c.display_width

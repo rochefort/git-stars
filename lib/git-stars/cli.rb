@@ -1,4 +1,4 @@
-require 'thor'
+require "thor"
 
 class GitStars
   class CLI < Thor
@@ -10,13 +10,13 @@ class GitStars
         handle_no_command_error(meth) unless command
 
         unless command.name == @default_command
-          shell.say 'Usage:'
+          shell.say "Usage:"
           shell.say "  #{banner(command)}"
           shell.say
         end
         class_options_help(shell, nil => command.options.map { |_, o| o })
         if command.long_description
-          shell.say 'Description:'
+          shell.say "Description:"
           shell.print_wrapped(command.long_description, indent: 2)
         else
           shell.say command.description
@@ -24,12 +24,12 @@ class GitStars
       end
     end
 
-    map '-v'        => :version,
-        '--version' => :version
+    map "-v"        => :version,
+        "--version" => :version
 
     default_command :list
 
-    desc :version, 'Show version'
+    desc :version, "Show version"
     def version
       say "git-stars version: #{VERSION}", :green
     end
@@ -48,18 +48,18 @@ class GitStars
       end
     end
 
-    desc :list, '', hide: true
-    option :token,       aliases: '-t', required: false, desc: 'Access token to use when connecting to the Github'
-    option :user,        aliases: '-u', required: false, desc: 'User to use when connecting to the Github'
-    option :password,    aliases: '-p', required: false, desc: "Password to use when connecting to the Github\n\n"
+    desc :list, "", hide: true
+    option :token,       aliases: "-t", required: false, desc: "Access token to use when connecting to the Github"
+    option :user,        aliases: "-u", required: false, desc: "User to use when connecting to the Github"
+    option :password,    aliases: "-p", required: false, desc: "Password to use when connecting to the Github\n\n"
 
-    option :all,         aliases: '-a', required: false, banner: '', desc: 'Get all projects (default: 30 projects)'
-    option :color,       aliases: '-c', required: false, default: true, type: :boolean, desc: 'Enable color in the output.'
-    option :format,      aliases: '-f', required: false, desc: 'Specific formatter. table(default) or simple'
-    option :keyword,     aliases: '-k', required: false, desc: 'Filter result by the keyword'
-    option :sort,        aliases: '-s', required: false, desc: 'Sort by columns, default column is starred_at. ([n]ame, [l]anuguage, [s]tars, [u] or last updated)'
-    option :columns_yml, aliases: '-y', required: false, desc: 'Specific columns.yml'
-    option :refresh,     aliases: '-r', required: false, banner: '', desc: 'Call API after removing cache'
+    option :all,         aliases: "-a", required: false, banner: "", desc: "Get all projects (default: 30 projects)"
+    option :color,       aliases: "-c", required: false, default: true, type: :boolean, desc: "Enable color in the output."
+    option :format,      aliases: "-f", required: false, desc: "Specific formatter. table(default) or simple"
+    option :keyword,     aliases: "-k", required: false, desc: "Filter result by the keyword"
+    option :sort,        aliases: "-s", required: false, desc: "Sort by columns, default column is starred_at. ([n]ame, [l]anuguage, [s]tars, [u] or last updated)"
+    option :columns_yml, aliases: "-y", required: false, desc: "Specific columns.yml"
+    option :refresh,     aliases: "-r", required: false, banner: "", desc: "Call API after removing cache"
 
     def list
       GitStars.list(options)

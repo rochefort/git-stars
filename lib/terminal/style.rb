@@ -2,7 +2,7 @@ module Terminal
   class Table
     class Style
       @@defaults = {
-        border_x: '-', border_y: '|', border_i: '+',
+        border_x: "-", border_y: "|", border_i: "+",
         padding_left: 1, padding_right: 1,
         width: nil, alignment: nil,
         wrap: true, wrap_minimum_width: 4
